@@ -1,0 +1,24 @@
+#OVERVIEW
+
+R package serves as an API entry point for UniCarbKB-GlyGen glycoprotein annotations
+
+###Installation
+devtools::install_git("https://gitlab.com/matthew.campbell1980/unicarbkb-glygen-r-package")
+
+Refer to documentation for each function
+
+###Citation
+Work supported by the Institute for Glycomics, Griffith University and the NIH Glycoscience Common Fund (GlyGen)
+
+@article{york2020glygen,
+  title={GlyGen: computational and informatics resources for glycoscience},
+  author={York, William S and Mazumder, Raja and Ranzinger, Rene and Edwards, Nathan and Kahsay, Robel and Aoki-Kinoshita, Kiyoko F and Campbell, Matthew P and Cummings, Richard D and Feizi, Ten and Martin, Maria and others},
+  journal={Glycobiology},
+  volume={30},
+  number={2},
+  pages={72--73},
+  year={2020},
+  publisher={Oxford University Press}
+}
+
+
