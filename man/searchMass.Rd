@@ -10,10 +10,10 @@ searchMass(mass)
 \item{mass}{Native mass}
 }
 \value{
-glytoucan
+glycan structure sequence details and mass
 }
 \description{
-This function converts input temperatures in Fahrenheit to Celsius.
+Gets structures with a mass
 }
 \examples{
 searchMass(180)

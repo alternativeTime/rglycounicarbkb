@@ -1,11 +1,12 @@
 library(tidyverse) ; library(httr) ; library(jsonlite) ; library(httr)
 
+
 #' Get entries matching composition
-#' @param composition String
-#' @return all glycoproteins
+#' @param composition
+#' @return all composition matches
 #' @export
 #' @examples
-#' searchComposition(hex=3&hexnac=5)
+#' getComposition(hex=3&hexnac=5)
 
 getComposition <- function(composition){
   path <- paste("https://flaskapp-cr-v1-gateway-v3vtg36c3q-ue.a.run.app/search-composition?", composition, sep='')
