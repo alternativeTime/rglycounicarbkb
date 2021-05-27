@@ -38,6 +38,12 @@ getProteoglycoforms <- function(uniprot){
   data
 }
 
+getGlytoucanUniprotAnnotations <- function(glytoucan_id){
+  path <- paste("https://flaskapp-cr-v1-gateway-v3vtg36c3q-ue.a.run.app/get-glytoucan-published-uniprot-glycoforms/",glytoucan_id, sep='')
+  data <- getJSON(path)
+  data
+}
+
 #' Get glycan structure details
 #' @param glytoucan_id
 #' @return structure metadata
@@ -72,9 +78,8 @@ getGlycanStructureGTs <- function(glytoucan_id){
 
 #' Gets structures with a mass
 #'
-#' This function converts input temperatures in Fahrenheit to Celsius.
 #' @param mass Native mass
-#' @return glytoucan
+#' @return glycan structure sequence details and mass
 #' @export
 #' @examples
 #' searchMass(180)
@@ -91,18 +96,31 @@ searchMass <- function(mass){
   x <- cleanJSON(x)
   data <- getJSON(path)
   data
-
-  #mydata <- data.frame(parameters = c(x), stringsAsFactors = FALSE)
-  # Parse json lines
-  #res <- jsonlite::stream_in(textConnection(mydata$parameters))
-
-  #a <- res$wurcs
-  #b1 <- sapply(res$b, "[", 1)
-  #a
-
-
-
 }
+
+#' Gets structures and glycoproteins with a mass
+#'
+#' @param mass Native mass
+#' @return glycan structure sequences, mass and associated glycoproteins
+#' @export
+#' @examples
+#' searchMass(180)
+#'
+
+searchMassGlycoprotein <- function(mass){
+  mass
+  path <- paste("https://flaskapp-cr-v1-gateway-v3vtg36c3q-ue.a.run.app/search-mass-glycoprotein/",mass, sep='')
+  path
+
+  r <- GET(url = path)
+  x <- content(r, as = "text", encoding = "UTF-8")
+
+  x <- cleanJSON(x)
+  data <- getJSON(path)
+  data
+}
+
+
 
 cleanJSON <- function(json){
   json <- gsub("f0_", "", json)
@@ -123,27 +141,7 @@ getJSON <- function(path){
   data
 }
 
-MyThirdFun <- function(n, y = 2)
-{
-  # Compute the power of n to the y
-  n^yS
-}
 
-fuck <- function(){
-  x <- '[ {"f0_": {"glytoucan":"G03187PO","wurcs":"123"},{"glytoucan":"dam","wurcs":"hello"}}]'
-  x <- gsub("f0_", "", x)
-  x <- gsub ("\\{\"\":", "", x)
-  x <- gsub ("}}]", "}]", x)
-
-  mydata <- data.frame(parameters = c(x), stringsAsFactors = FALSE)
-  # Parse json lines
-  res <- jsonlite::stream_in(textConnection(mydata$parameters))
-
-  # Extract columns
-  a <- res$wurcs
-  #b1 <- sapply(res$b, "[", 1)
-  a
-}
 
 
 
